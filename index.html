@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<body>
+  <h2>Search Profile by Skill</h2>
+  <input id="skill" placeholder="Enter skill" />
+  <button onclick="search()">Search</button>
+  <pre id="result"></pre>
+
+  <script>
+    function search() {
+      const skill = document.getElementById("skill").value;
+      fetch(`http://localhost:3000/skills/top?skill=${skill}`)
+        .then(res => res.json())
+        .then(data => {
+          document.getElementById("result").innerText =
+            JSON.stringify(data, null, 2);
+        });
+    }
+  </script>
+</body>
+</html>
